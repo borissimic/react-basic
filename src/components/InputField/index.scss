@@ -1,0 +1,18 @@
+@import "styles/colors.scss";
+
+.input-field{
+ border-bottom: 2px solid $color-primary;
+ color:$color-primary;
+ transition: 0.2s transform;
+ 
+ &:hover,
+ &.focus{
+  transform: translateY(-3px);
+ }
+
+ input{
+  border:none;
+  outline:none;
+ }
+
+}
