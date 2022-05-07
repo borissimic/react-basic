@@ -1,0 +1,85 @@
+{
+  "contacts": [
+    {
+      "id": 0,
+      "name": "Bikonja",
+      "surname": "Bikic",
+      "profilePicture": "https://astrodrom.hr/wp-content/uploads/2021/04/depositphotos_337481976-stock-photo-furious-bull-big-horns-spain.jpg",
+      "phoneNumber": "+3853213213",
+      "emailAdress": "bikonja.bikic@gmail.com",
+      "isFavorite": true
+    },
+    {
+      "id": 1,
+      "name": "Mercedes",
+      "surname": "Bikic",
+      "profilePicture": "",
+      "phoneNumber": "+3853213213",
+      "emailAdress": "mercedes.bikic@gmail.com",
+      "isFavorite": false
+    },
+    {
+      "id": 2,
+      "name": "Torpedo",
+      "surname": "Horvat",
+      "profilePicture": "",
+      "phoneNumber": "+3853213213",
+      "emailAdress": "torpedo1950@gmail.com",
+      "isFavorite": false
+    },
+    {
+      "id": 3,
+      "name": "Torpedo",
+      "surname": "Horvat",
+      "profilePicture": "",
+      "phoneNumber": "+3853213213",
+      "emailAdress": "torpedo1950@gmail.com",
+      "isFavorite": false
+    },
+    {
+      "id": 4,
+      "name": "Torpedo",
+      "surname": "Horvat",
+      "profilePicture": "",
+      "phoneNumber": "+3853213213",
+      "emailAdress": "torpedo1950@gmail.com",
+      "isFavorite": false
+    },
+    {
+      "id": 5,
+      "name": "Torpedo",
+      "surname": "Horvat",
+      "profilePicture": "",
+      "phoneNumber": "+3853213213",
+      "emailAdress": "torpedo1950@gmail.com",
+      "isFavorite": false
+    },
+    {
+      "id": 6,
+      "name": "Torpedo",
+      "surname": "Horvat",
+      "profilePicture": "",
+      "phoneNumber": "+3853213213",
+      "emailAdress": "torpedo1950@gmail.com",
+      "isFavorite": false
+    },
+    {
+      "id": 7,
+      "name": "Torpedo",
+      "surname": "Horvat",
+      "profilePicture": "",
+      "phoneNumber": "+3853213213",
+      "emailAdress": "torpedo1950@gmail.com",
+      "isFavorite": false
+    },
+    {
+      "id": 8,
+      "name": "Torpedo",
+      "surname": "Horvat",
+      "profilePicture": "",
+      "phoneNumber": "+3853213213",
+      "emailAdress": "torpedo1950@gmail.com",
+      "isFavorite": false
+    }
+  ]
+}
