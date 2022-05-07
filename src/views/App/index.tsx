@@ -3,22 +3,32 @@ import ContactList from "components/ContactList";
 import Header from "components/Header";
 import InputField from "components/InputField";
 import { formatSearchQuery } from "components/utils/generic.util";
-import { Contact } from "models/contact.model";
-import { ChangeEvent, useState } from "react";
-
-const _contacts: Contact[] = [].map((contact) => new Contact(contact));
+import ContactsHttp from "http/contacts.http";
+import { ChangeEvent, useCallback, useEffect, useMemo, useState } from "react";
 
 const App = () => {
-  const [contacts, setContacts] = useState(_contacts);
+  const [contacts, setContacts] = useState([]);
 
   const inputHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const term = event.target.value;
-    const filteredContacts = _contacts.filter(({ fullName }) =>
-      formatSearchQuery(fullName).includes(formatSearchQuery(term))
-    );
+    fetchContacts(term);
 
-    setContacts(filteredContacts);
+    // const filteredContacts = []
   };
+
+  const contactsHttp = useMemo(() => new ContactsHttp(), []);
+
+  const fetchContacts = useCallback(
+    async (query?: string) => {
+      const contacts = await contactsHttp.getContacts(query);
+      setContacts(contacts);
+    },
+    [contactsHttp]
+  );
+
+  useEffect(() => {
+    fetchContacts();
+  }, [fetchContacts]);
 
   return (
     <>
