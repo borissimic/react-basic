@@ -1,25 +1,27 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ChangeEventHandler, useState } from "react";
+import { cloneElement } from "react";
+import { useState } from "react";
 import "./index.scss";
 
-const InputField = ({onChange,type,icon}:Props) => {
- const[focus,setFocus] = useState(false);
- const onFocus = () => setFocus(true);
- const onBlur = () => setFocus(false)
+const InputField = ({ icon, children }: Props) => {
+  const [focus, setFocus] = useState(false);
+  const onFocus = () => setFocus(true);
+  const onBlur = () => setFocus(false);
 
- return <div className={`input-field ${focus ? "focus":"" }`}>
-     <FontAwesomeIcon icon={icon}/>
-     <input onChange={onChange} type={type} onFocus={onFocus} onBlur={onBlur} />
-     </div>
-  
- 
-}
+  const content = cloneElement(children, { onFocus, onBlur });
 
-type Props ={
-  onChange:ChangeEventHandler<HTMLInputElement>;
-  type : string;
-  icon?: IconProp
+  return (
+    <div className={`input-field ${focus ? "focus" : ""}`}>
+      <FontAwesomeIcon className="m-r-5" icon={icon} />
 
-}
-export default InputField
+      {content}
+    </div>
+  );
+};
+
+type Props = {
+  icon?: IconProp;
+  children: any;
+};
+export default InputField;
