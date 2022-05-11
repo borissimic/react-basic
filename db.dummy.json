@@ -4,18 +4,18 @@
       "id": 0,
       "name": "Bikonja",
       "surname": "Bikic",
-      "profilePicture": "https://astrodrom.hr/wp-content/uploads/2021/04/depositphotos_337481976-stock-photo-furious-bull-big-horns-spain.jpg",
       "phoneNumber": "+3853213213",
       "emailAdress": "bikonja.bikic@gmail.com",
-      "isFavorite": true
+      "profilePicture": "https://astrodrom.hr/wp-content/uploads/2021/04/depositphotos_337481976-stock-photo-furious-bull-big-horns-spain.jpg",
+      "isFavorite": false
     },
     {
       "id": 1,
       "name": "Mercedes",
       "surname": "Bikic",
-      "profilePicture": "",
       "phoneNumber": "+3853213213",
       "emailAdress": "mercedes.bikic@gmail.com",
+      "profilePicture": "",
       "isFavorite": false
     },
     {

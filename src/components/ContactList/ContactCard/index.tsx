@@ -1,41 +1,69 @@
-import { faEnvelope, faHeart, faPencil, faPhone, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faHeart,
+  faPencil,
+  faPhone,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ImageFrame from "components/ImageFrame";
+import ContactsHttp from "http/contacts.http";
 import { Contact } from "models/contact.model";
-import "./index.scss"
+import { useState } from "react";
+import "./index.scss";
 
-const ContactCard= ({contact}:Props)=>{
-const {fullName,profilePicture,phoneNumber,emailAdress} = contact;
+const ContactCard = ({ contact: _contact }: Props) => {
+  const [contact, setContact] = useState(_contact);
+  const { id, fullName, profilePicture, phoneNumber, emailAdress, isFavorite } =
+    contact;
+  const contactsHttp = new ContactsHttp();
 
- return <li
- className="contact-card">
-   <FontAwesomeIcon className="contact-card__icon" icon={faTrash} size="lg" color="gray" />
-   
-   <div className="contact-card__icon contact-card__icon--right">
-   <FontAwesomeIcon  className="m-r-5"icon={faHeart} size="lg" color="gray" />
-   <FontAwesomeIcon icon={faPencil} size="lg" color="gray" />
-   </div>
+  const favoriteHandler = async () => {
+    const newContact = await contactsHttp.updateContact(id, {
+      isFavorite: !isFavorite,
+    });
 
+    setContact(newContact);
+  };
 
-  <ImageFrame imageUrl={profilePicture}></ImageFrame>
-  <h3>{fullName}</h3>
- <div className="contact-card__info">
-   <div>
-   <FontAwesomeIcon icon={faEnvelope} size="lg" color="gray" />
-   <span>{emailAdress}</span>
-   </div>
-   <div>
-   <FontAwesomeIcon icon={faPhone} size="lg" color="gray" />
-   <span>{phoneNumber}</span>
-  </div>
- </div>
+  return (
+    <li className="contact-card">
+      <FontAwesomeIcon
+        className="contact-card__icon"
+        icon={faTrash}
+        size="lg"
+        color="gray"
+      />
 
+      <div className="contact-card__icon contact-card__icon--right">
+        <FontAwesomeIcon
+          className="m-r-5"
+          onClick={favoriteHandler}
+          icon={faHeart}
+          size="lg"
+          color={isFavorite ? "pink" : "gray"}
+        />
+        <FontAwesomeIcon icon={faPencil} size="lg" color="gray" />
+      </div>
 
-  </li>;
+      <ImageFrame imageUrl={profilePicture}></ImageFrame>
+      <h3>{fullName}</h3>
+      <div className="contact-card__info">
+        <div>
+          <FontAwesomeIcon icon={faEnvelope} size="lg" color="gray" />
+          <span>{emailAdress}</span>
+        </div>
+        <div>
+          <FontAwesomeIcon icon={faPhone} size="lg" color="gray" />
+          <span>{phoneNumber}</span>
+        </div>
+      </div>
+    </li>
+  );
 };
 
-type Props ={
-contact:Contact;
+type Props = {
+  contact: Contact;
 };
 
 export default ContactCard;
