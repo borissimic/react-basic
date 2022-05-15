@@ -7,7 +7,7 @@
       "phoneNumber": "+3853213213",
       "emailAdress": "bikonja.bikic@gmail.com",
       "profilePicture": "https://astrodrom.hr/wp-content/uploads/2021/04/depositphotos_337481976-stock-photo-furious-bull-big-horns-spain.jpg",
-      "isFavorite": false
+      "isFavorite": true
     },
     {
       "id": 1,
@@ -16,7 +16,7 @@
       "phoneNumber": "+3853213213",
       "emailAdress": "mercedes.bikic@gmail.com",
       "profilePicture": "",
-      "isFavorite": false
+      "isFavorite": true
     },
     {
       "id": 2,
