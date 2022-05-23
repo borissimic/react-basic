@@ -1,18 +1,30 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
-import "./index.scss"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { colorPrimary } from "constants/colors.constants";
+import "./index.scss";
+import { createClass } from "utils/generic.util";
 
-const ImageFrame = ({imageUrl}:Props) => {
- let content = <FontAwesomeIcon icon={faUser} size="3x" color="gray" />
+const ImageFrame = ({ imageUrl, icon }: Props) => {
+  const createContent = () => {
+    if (icon) {
+      return <FontAwesomeIcon icon={icon} size="3x" color={colorPrimary} />;
+    }
 
- if (imageUrl){
-  content =  <img src={imageUrl} alt="" />
- }
+    if (imageUrl) {
+      return <img src={imageUrl} alt="" />;
+    }
 
- return <div className="image-frame">{content}</div>
- 
-}
+    return <FontAwesomeIcon icon={faUser} size="3x" color="gray" />;
+  };
 
-type Props = {imageUrl:string}
+  const classes = createClass(
+    { "image-frame--secondary": icon },
+    "image-frame"
+  );
 
-export default ImageFrame
+  return <div className={classes}>{createContent()}</div>;
+};
+
+type Props = { imageUrl?: string; icon?: IconDefinition };
+
+export default ImageFrame;

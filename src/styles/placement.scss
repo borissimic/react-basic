@@ -37,42 +37,45 @@ $spaces: (
   }
 }
 
+@each $name, $space in $spaces {
+  .m-l-#{$name} {
+    margin-left: $space;
+  }
+  .m-r-#{$name} {
+    margin-right: $space;
+  }
+  .m-t-#{$name} {
+    margin-top: $space;
+  }
+  .m-b-#{$name} {
+    margin-bottom: $space;
+  }
+  .m-#{$name} {
+    margin: $space;
+  }
+  .p-l-#{$name} {
+    padding-left: $space;
+  }
+  .p-r-#{$name} {
+    padding-right: $space;
+  }
+  .p-t-#{$name} {
+    padding-top: $space;
+  }
+  .p-b-#{$name} {
+    padding-bottom: $space;
+  }
+  .p-#{$name} {
+    padding: $space;
+  }
+}
+
 @for $i from 1 to 21 {
   .w-#{5 *$i} {
     width: 5% * $i;
   }
-
-  @each $name, $space in $spaces {
-    .m-l-#{$name} {
-      margin-left: $space;
-    }
-    .m-r-#{$name} {
-      margin-right: $space;
-    }
-    .m-t-#{$name} {
-      margin-top: $space;
-    }
-    .m-b-#{$name} {
-      margin-bottom: $space;
-    }
-    .m-#{$name} {
-      margin: $space;
-    }
-    .p-l-#{$name} {
-      padding-left: $space;
-    }
-    .p-r-#{$name} {
-      padding-right: $space;
-    }
-    .p-t-#{$name} {
-      padding-top: $space;
-    }
-    .p-b-#{$name} {
-      padding-bottom: $space;
-    }
-    .p-#{$name} {
-      padding: $space;
-    }
+  .w-px-#{25 * $i} {
+    width: 25px * $i;
   }
 }
 
