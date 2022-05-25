@@ -64,22 +64,22 @@
       "isFavorite": false
     },
     {
-      "id": 7,
-      "name": "Torpedo",
+      "name": "Torpedos",
       "surname": "Horvat",
-      "profilePicture": "",
       "phoneNumber": "+3853213213",
       "emailAdress": "torpedo1950@gmail.com",
-      "isFavorite": false
+      "profilePicture": "",
+      "isFavorite": false,
+      "id": 7
     },
     {
-      "id": 8,
-      "name": "Torpedo",
+      "name": "Benwe",
       "surname": "Horvat",
-      "profilePicture": "",
       "phoneNumber": "+3853213213",
       "emailAdress": "torpedo1950@gmail.com",
-      "isFavorite": false
+      "profilePicture": "",
+      "isFavorite": false,
+      "id": 8
     }
   ]
 }
