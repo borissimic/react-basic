@@ -1,11 +1,57 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUpload,
+  faUser,
+  IconDefinition,
+} from "@fortawesome/free-solid-svg-icons";
 import { COLOR_PRIMARY } from "constants/colors.constants";
 import "./index.scss";
-import { createClass } from "utils/generic.util";
+import { createClass, fileToBase64 } from "utils/generic.util";
+import { useContext, useEffect, useState } from "react";
+import { CustomFormContext } from "context/custom-form.context";
 
-const ImageFrame = ({ imageUrl, icon }: Props) => {
+const ImageFrame = ({
+  className = "",
+  imageUrl,
+  icon,
+  formControl = null,
+}: Props) => {
+  const [id, validators] = formControl || [];
+  const { disabled, ...methods } = useContext(CustomFormContext);
+  const [image, setImage] = useState(null);
+  const isFormEnabled = formControl && !disabled;
+
+  const placeholder = (
+    <FontAwesomeIcon
+      icon={formControl ? faUpload : faUser}
+      size="3x"
+      color="gray"
+    />
+  );
+
+  const imageHandler = async (event: any) => {
+    const image = await fileToBase64(event.target.files);
+
+    methods.setValue(id, image);
+    setImage(image as string);
+  };
+
   const createContent = () => {
+    if (isFormEnabled) {
+      return (
+        <label htmlFor="image-upload">
+          {image ? <img src={image} alt="" /> : placeholder}
+          <input
+            id="image-upload"
+            type="file"
+            accept="image/*"
+            {...methods.register(id, validators)}
+            onChange={imageHandler}
+          />
+        </label>
+      );
+    }
+
     if (icon) {
       return <FontAwesomeIcon icon={icon} size="3x" color={COLOR_PRIMARY} />;
     }
@@ -14,17 +60,28 @@ const ImageFrame = ({ imageUrl, icon }: Props) => {
       return <img src={imageUrl} alt="" />;
     }
 
-    return <FontAwesomeIcon icon={faUser} size="3x" color="gray" />;
+    return placeholder;
   };
 
   const classes = createClass(
     { "image-frame--secondary": icon },
-    "image-frame"
+    `image-frame ${className}`
   );
 
+  useEffect(() => {
+    if (isFormEnabled) {
+      return setImage(methods.getValues(id));
+    }
+    setImage(imageUrl);
+  }, [methods, id, imageUrl, isFormEnabled]);
   return <div className={classes}>{createContent()}</div>;
 };
 
-type Props = { imageUrl?: string; icon?: IconDefinition };
+type Props = {
+  imageUrl?: string;
+  icon?: IconDefinition;
+  formControl?: any[];
+  className?: string;
+};
 
 export default ImageFrame;
