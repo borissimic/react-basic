@@ -1,13 +1,13 @@
 {
   "contacts": [
     {
-      "id": 0,
       "name": "Bikonja",
       "surname": "Bikic",
       "phoneNumber": "+3853213213",
       "emailAdress": "bikonja.bikic@gmail.com",
       "profilePicture": "https://astrodrom.hr/wp-content/uploads/2021/04/depositphotos_337481976-stock-photo-furious-bull-big-horns-spain.jpg",
-      "isFavorite": true
+      "isFavorite": true,
+      "id": 0
     },
     {
       "id": 1,
@@ -73,7 +73,7 @@
       "id": 7
     },
     {
-      "name": "Benwe",
+      "name": "Benve",
       "surname": "Horvat",
       "phoneNumber": "+3853213213",
       "emailAdress": "torpedo1950@gmail.com",

@@ -36,12 +36,11 @@ const EditPage = () => {
   };
 
   return (
-    <Form onSubmit={submitHandler} preFill={contact}>
+    <Form onSubmit={submitHandler} preFill={contact} isDisabled={isReadonly}>
       <InputField
         label="First name:"
         className="w-px-150"
         icon={faUser}
-        isDisabled={!!isReadonly}
         formControl={[
           "name",
           validators({

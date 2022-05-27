@@ -1,21 +1,29 @@
+import { CustomFormProvider } from "context/custom-form.context";
 import { useEffect } from "react";
-import { useForm, FormProvider } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { createClass } from "utils/generic.util";
 
-const Form = ({ children, onSubmit, className, preFill }: Props) => {
+const Form = ({
+  children,
+  onSubmit,
+  className,
+  preFill,
+  isDisabled,
+}: Props) => {
   const methods = useForm();
+
   const classes = createClass(
     { submitted: methods.formState.isSubmitted },
     className
   );
-  useEffect(() => methods.reset(preFill), [preFill]);
+  useEffect(() => methods.reset(preFill), [preFill, methods]);
 
   return (
-    <FormProvider {...methods}>
+    <CustomFormProvider isDisabled={isDisabled} methods={methods}>
       <form className={classes} onSubmit={methods.handleSubmit(onSubmit)}>
         {children}
       </form>
-    </FormProvider>
+    </CustomFormProvider>
   );
 };
 
@@ -24,6 +32,7 @@ type Props = {
   onSubmit: any;
   className?: any;
   preFill?: any;
+  isDisabled?: boolean;
 };
 
 export default Form;

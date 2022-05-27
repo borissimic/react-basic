@@ -1,28 +1,25 @@
-import "./index.scss";
+import { Navigate, Route, Routes } from "react-router-dom";
 
-import { Route, Routes } from "react-router-dom";
-import ContactPage from "./ContactPage";
-import { ContactsProvider } from "context/contacts.context";
 import EditPage from "views/App/EditPage";
+import ContactDashboard from "./ContactDashboard";
+
+import "./index.scss";
 
 const App = () => {
   return (
-    <ContactsProvider>
+    <>
       <header className="header">
         <h1 className="header__title">Bikontakt</h1>
       </header>
       <main className="flex flex-column flex-align-center m-t-20">
         <Routes>
-          <Route path="/" element={<ContactPage />}></Route>
-          <Route
-            path="/favorites"
-            element={<ContactPage isFavoritesPage />}
-          ></Route>
-          <Route path="/create" element={<EditPage />}></Route>
-          <Route path="/edit/:id" element={<EditPage />}></Route>
+          <Route path="*" element={<Navigate to={"/contacts/all"} replace />} />
+          <Route path="/contacts/*" element={<ContactDashboard />} />
+          <Route path="/create" element={<EditPage />} />
+          <Route path="/edit/:id" element={<EditPage />} />
         </Routes>
       </main>
-    </ContactsProvider>
+    </>
   );
 };
 

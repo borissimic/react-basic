@@ -1,7 +1,7 @@
 import { Contact } from "models/contact.model";
-import React, { useState } from "react";
+import { createContext, useState } from "react";
 
-const ContactsContext = React.createContext({
+const ContactsContext = createContext({
   contacts: [],
   setContacts: (contacts: Contact[]) => {},
 });

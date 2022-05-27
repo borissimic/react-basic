@@ -1,7 +1,6 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import ContactList from "components/ContactList";
 import InputField from "components/InputField";
-import NavMenu from "components/NavMenu";
 import { ContactsContext } from "context/contacts.context";
 import ContactsHttp from "http/contacts.http";
 import {
@@ -16,10 +15,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { buildUrlParams, parseUrlParamas } from "utils/generic.util";
 
 const ContactPage = ({ isFavoritesPage }: Props) => {
-  const navItems = [
-    { name: "Contacts", path: "/" },
-    { name: "Favorites", path: "/favorites" },
-  ];
   const location = useLocation();
   const navigate = useNavigate();
   const { contacts, setContacts } = useContext(ContactsContext);
@@ -56,8 +51,6 @@ const ContactPage = ({ isFavoritesPage }: Props) => {
 
   return (
     <>
-      <NavMenu className="m-b-50" items={navItems}></NavMenu>
-
       <InputField className={isFavoritesPage && "hidden"} icon={faSearch}>
         <input
           onChange={inputHandler}
